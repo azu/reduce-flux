@@ -8,6 +8,7 @@ export default class StoreGroups extends EventEmitter {
     constructor(dispatcher) {
         super();
         // assert
+        assert(dispatcher !== undefined, "should initialize with ActionEmitter");
         assert(dispatcher instanceof ActionEmitter, "should be instance of ActionEmitter");
         assert(typeof this.getStores === "function", "should implement `getStores(): ReduceStore[].");
         this.dispatcher = dispatcher;
