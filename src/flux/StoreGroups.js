@@ -4,6 +4,7 @@ import {EventEmitter} from "events"
 import ActionEmitter from "./ActionEmitter";
 import assert from "assert";
 const STORE_GROUPS_KEY = "__CHANGE__";
+const DISPATCH_AFTER = "__DISPATCH_AFTER__";
 export default class StoreGroups extends EventEmitter {
     constructor(dispatcher) {
         super();
@@ -19,15 +20,26 @@ export default class StoreGroups extends EventEmitter {
     }
 
     _setupOnChangeHandler() {
+        let isChanged = false;
+        const onChange = () => {
+            isChanged = true;
+        };
+        const afterChange = () => {
+            if (isChanged) {
+                this.emitChange();
+            }
+            isChanged = false;
+        };
         this.stores.forEach(store => {
-            var pureEachEmitChange = this.emitChange.bind(this);
-            store.onChange(pureEachEmitChange);
+            store.onChange(onChange);
+        });
+        this.on(DISPATCH_AFTER, () => {
+            afterChange();
         });
     }
 
     // some store change
     emitChange() {
-        // TODO: need queue of store for once dispatch
         this.emit(STORE_GROUPS_KEY);
     }
 
@@ -54,5 +66,6 @@ export default class StoreGroups extends EventEmitter {
                 store.setState(newState);
             }
         });
+        this.emit(DISPATCH_AFTER);
     }
 }
