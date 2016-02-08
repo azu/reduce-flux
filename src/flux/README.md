@@ -11,6 +11,12 @@ ReduceStore has `reduce`.
 
 It is similar to ReduceStore of `flux-utils`
 
+Your Store should inherited of `ReduceStore`
+
 ## StoreGroups
 
 StoreGroups observe ReduceStore**s** by defined `getStores`.
+
+Your State Manager should inherited of `StoreGroups`
+
+

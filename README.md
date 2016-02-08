@@ -9,6 +9,10 @@ mini flux implement for DEMO.
     - just mean that this implement not handle order of events
     
 
+## Docs
+
+:anchor: See [src/flux/README.md](src/flux/README.md)
+
 ## Installation
 
     npm install

@@ -8,7 +8,7 @@ export default class ActionCreator {
         this.dispatcher = dispatcher;
     }
 
-    // "Emit" event ----> Store
+    // emit Action event ----> Store
     countUp(count) {
         this.dispatcher.dispatch({
             type: keys.countUp,

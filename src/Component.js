@@ -14,7 +14,7 @@ export default class Component extends React.Component {
     }
 
     componentDidMount() {
-        // <- Observe store's change
+        // <---- Observe store's change
         this.removeChangeListener = appStateGroup.onChange(() => {
             this._onChange();
         });
@@ -36,8 +36,8 @@ export default class Component extends React.Component {
     render() {
         return (
             <div>
+                // Call Action ----> ActionCreator
                 <button onClick={this.tick.bind(this)}>Count Up</button>
-
                 <p>
                     Count: {this.state.count}
                 </p>
