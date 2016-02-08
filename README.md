@@ -1,4 +1,6 @@
-# mini-flux
+# dux-flux
+
+This is fork of [mini-flux](https://github.com/azu/mini-flux)
 
 mini flux implement for DEMO.
 

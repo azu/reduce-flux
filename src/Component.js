@@ -3,22 +3,30 @@
 import React from "react"
 import ActionCreator from "./ActionCreator"
 import ActionEmitter from "./flux/ActionEmitter"
-import StoreGroup from "./StoreGroups";
+import AppStateGroup from "./AppState";
 var dispatcher = new ActionEmitter();
 var action = new ActionCreator(dispatcher);
-const storeGroup = new StoreGroup(dispatcher);
+const appStateGroup = new AppStateGroup(dispatcher);
 export default class Component extends React.Component {
     constructor(props) {
         super(props);
-        this.state = storeGroup.getState();
+        this.state = appStateGroup.getState();
+    }
+
+    componentDidMount() {
         // <- Observe store's change
-        storeGroup.onChange(() => {
+        this.removeChangeListener = appStateGroup.onChange(() => {
             this._onChange();
         });
     }
 
+    componentWillUnmount() {
+        this.this.removeChangeListener()
+    }
+
+    // update state
     _onChange() {
-        this.setState(storeGroup.getState());
+        this.setState(appStateGroup.getState());
     }
 
     tick() {
