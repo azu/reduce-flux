@@ -14,11 +14,13 @@ export function countReducer(count = 0, action) {
 export default class CounterStore extends ReduceStore {
     constructor() {
         super();
+        // initial state
         this.state = {
             count: 0
         };
     }
 
+    // user implementation
     reduce(prevState, action) {
         return {
             count: countReducer(prevState.count, action)

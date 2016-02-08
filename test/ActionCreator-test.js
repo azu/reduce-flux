@@ -2,19 +2,19 @@
 "use strict";
 import assert from "power-assert"
 import ActionCreator from "../src/ActionCreator"
-import EventEmitter from "../src/flux/EventEmitter"
+import ActionEmitter from "../src/flux/ActionEmitter"
 describe("ActionCreator", function () {
     var dispatcher;
     var action;
     beforeEach(function () {
-        dispatcher = new EventEmitter();
+        dispatcher = new ActionEmitter();
         action = new ActionCreator(dispatcher);
     });
     describe("countUp", function () {
         it("should emit `countUp` event", function (done) {
             var expectedCount = 42;
-            dispatcher.on("countUp", function (count) {
-                assert.equal(count, expectedCount);
+            dispatcher.onAction(action => {
+                assert.equal(action.count, expectedCount);
                 done();
             });
             action.countUp(expectedCount);

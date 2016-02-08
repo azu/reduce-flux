@@ -1,20 +1,19 @@
 // LICENSE : MIT
 "use strict";
 import assert from "power-assert"
-import Store from "../src/Store"
-import EventEmitter from "../src/flux/EventEmitter"
+import Store from "../src/CounterStore"
+import {keys} from "../src/ActionCreator";
+import ActionEmitter from "../src/flux/ActionEmitter";
 describe("Store", function () {
-    var instance;
-    var dispatcher;
-    beforeEach(function () {
-        dispatcher = new EventEmitter();
-        instance = new Store(dispatcher);
-    });
     describe("onCountUp", function () {
-        it("should emit `CHANGE` event", function (done) {
+        it("should emit `CHANGE` event", function () {
+            const store = new Store();
             var expectedCount = 42;
-            instance.on("CHANGE", done);
-            dispatcher.emit("countUp", expectedCount);
+            var newState = store.reduce(store.getState(), {
+                type: keys.countUp,
+                count: expectedCount
+            });
+            assert.equal(newState.count, expectedCount);
         });
     });
 });
