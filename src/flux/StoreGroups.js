@@ -42,7 +42,7 @@ export default class StoreGroups extends EventEmitter {
     onChange(changeHandler) {
         this.on(STORE_GROUPS_KEY, changeHandler);
         // unbind function
-        return this.removeListener.bind(this, STORE_GROUPS_KEY, changeHandler);
+        return this.off.bind(this, STORE_GROUPS_KEY, changeHandler);
     }
 
     dispatch(action) {
