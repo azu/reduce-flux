@@ -1,9 +1,9 @@
 // LICENSE : MIT
 "use strict";
-import Emitter from "./EventEmitter"
+import EventEmitter from "events"
 import assert from "assert";
 export const REDUCE_STORE_CHANGE_KEY = "__REDUCE_STORE_CHANGE_KEY__";
-export default class ReduceStore extends Emitter {
+export default class ReduceStore extends EventEmitter {
     getState() {
         assert(this.state, "should be defined state");
         assert(typeof this.reduce, "should implement reduce(state, action) method");

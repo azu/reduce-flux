@@ -18,9 +18,14 @@
     "test": "test"
   },
   "scripts": {
-    "build": "browserify -d -e src/App.js -t [ babelify --loose es6.classes ]  -o build.js",
-    "watch": "watchify -d -e src/App.js -t [ babelify --loose es6.classes ] -o build.js",
+    "build": "browserify -d -e src/App.js -o build.js",
+    "watch": "watchify -d -e src/App.js -o build.js",
     "test": "mocha test/**/*.js"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
   },
   "devDependencies": {
     "babel": "^6.5.1",
@@ -38,6 +43,7 @@
     "watchify": "^3.1.1"
   },
   "dependencies": {
-    "react": "^0.14.7"
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
   }
 }
