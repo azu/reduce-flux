@@ -4,6 +4,8 @@ import {EventEmitter} from "events"
 import ActionEmitter from "./ActionEmitter";
 import assert from "assert";
 const STORE_GROUPS_KEY = "__CHANGE__";
+// TODO: should be public
+const DISPATCH_BEFORE = "__DISPATCH_BEFORE__";
 const DISPATCH_AFTER = "__DISPATCH_AFTER__";
 export default class StoreGroups extends EventEmitter {
     constructor(dispatcher) {
@@ -59,6 +61,7 @@ export default class StoreGroups extends EventEmitter {
     }
 
     dispatch(action) {
+        this.emit(DISPATCH_BEFORE);
         this.stores.forEach(store => {
             var prevState = store.getState();
             var newState = store.reduce(prevState, action);
