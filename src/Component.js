@@ -34,9 +34,9 @@ export default class Component extends React.Component {
     }
 
     render() {
+        // Call Action ----> ActionCreator
         return (
             <div>
-                // Call Action ----> ActionCreator
                 <button onClick={this.tick.bind(this)}>Count Up</button>
                 <p>
                     Count: {this.state.count}
