@@ -47,6 +47,15 @@ Your State Manager should inherited of `StoreGroups`
 
     npm test
 
+## TODO
+
+- Q. How to treat Shared Store?
+    - A. Does create singleton of Store?
+- Q. What has Multiple state in a single App cons?
+    - ???
+    - debug?
+- Q. User create a instance of ActionEmitter. It means that multiple emitter is exist in a single app.
+
 ## Contributing
 
 1. Fork it!
