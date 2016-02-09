@@ -1,8 +1,8 @@
 // LICENSE : MIT
 "use strict";
 import assert from "power-assert"
-import AppState from "../src/AppState"
-import ActionCreator from "../src/ActionCreator"
+import AppState from "../examples/counter/src/AppState"
+import ActionCreator from "../examples/counter/src/ActionCreator"
 import ActionEmitter from "../src/flux/ActionEmitter"
 const actionEmitter = new ActionEmitter();
 const actionCreator = new ActionCreator(actionEmitter);

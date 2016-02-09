@@ -1,7 +1,7 @@
 // LICENSE : MIT
 "use strict";
 import assert from "power-assert"
-import ActionCreator from "../src/ActionCreator"
+import ActionCreator from "../examples/counter/src/ActionCreator"
 import ActionEmitter from "../src/flux/ActionEmitter"
 describe("ActionCreator", function () {
     var dispatcher;

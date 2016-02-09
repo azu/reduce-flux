@@ -1,7 +1,7 @@
 // LICENSE : MIT
 "use strict";
 import {keys} from "./ActionCreator"
-import ReduceStore from "./flux/ReduceStore";
+import ReduceStore from "./../../src/flux/ReduceStore";
 // reduce function
 export function countReducer(count = 0, action) {
     switch (action.type) {

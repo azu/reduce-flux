@@ -1,8 +1,8 @@
 // LICENSE : MIT
 "use strict";
 import assert from "power-assert"
-import Store from "../src/CounterStore"
-import {keys} from "../src/ActionCreator";
+import Store from "../examples/counter/src/CounterStore"
+import {keys} from "../examples/counter/src/ActionCreator";
 describe("Store", function () {
     describe("onCountUp", function () {
         it("should emit `CHANGE` event", function () {

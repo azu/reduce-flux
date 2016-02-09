@@ -10,7 +10,7 @@ import {EventEmitter} from "events"
 import ReducableStore from "./CounterStore";
 // store instances
 const reduceStore = new ReducableStore();
-import StoreGroups from "./flux/StoreGroups";
+import StoreGroups from "./../../src/flux/StoreGroups";
 export default class AppState extends StoreGroups {
     // must implement
     getStores() {

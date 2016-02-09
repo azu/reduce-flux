@@ -1,14 +1,19 @@
 // LICENSE : MIT
 "use strict";
+import * as assert from "assert";
 import {EventEmitter} from "events"
+import {Action} from "./Action";
 import ActionEmitter from "./ActionEmitter";
-import assert from "assert";
-const STORE_GROUPS_KEY = "__CHANGE__";
-// TODO: should be public
-const DISPATCH_BEFORE = "__DISPATCH_BEFORE__";
-const DISPATCH_AFTER = "__DISPATCH_AFTER__";
-export default class StoreGroups extends EventEmitter {
-    constructor(dispatcher) {
+// for typing
+import ReduceStore from "./ReduceStore";
+export const STORE_GROUPS_CHANGE = "__STORE_GROUPS_CHANGE__";
+export const DISPATCH_BEFORE = "__DISPATCH_BEFORE__";
+export const DISPATCH_AFTER = "__DISPATCH_AFTER__";
+abstract class StoreGroups extends EventEmitter {
+    private dispatcher:ActionEmitter;
+    private stores:ReduceStore[];
+
+    constructor(dispatcher:ActionEmitter) {
         super();
         // assert
         assert(dispatcher !== undefined, "should initialize with ActionEmitter");
@@ -18,8 +23,20 @@ export default class StoreGroups extends EventEmitter {
         this.dispatcher.onAction(this.dispatch.bind(this));
         this.stores = this.getStores();
         this._setupOnChangeHandler();
-
     }
+
+    /**
+     * Return own collection of stores
+     * @abstract subclass must implement
+     */
+    abstract getStores():ReduceStore[];
+
+
+    /**
+     * Return state of own stores
+     * @abstract subclass must implement
+     */
+    abstract getState():void;
 
     _setupOnChangeHandler() {
         let isChanged = false;
@@ -40,27 +57,25 @@ export default class StoreGroups extends EventEmitter {
         });
     }
 
-    // some store change
-    emitChange() {
-        this.emit(STORE_GROUPS_KEY);
+    /**
+     * emit change event to this
+     */
+    emitChange():void {
+        this.emit(STORE_GROUPS_CHANGE);
     }
 
-    // must implement
-    getStores() {
-        assert("should implement `getStores(): ReduceStore[] in " + this.constructor.name);
-    }
-
-    getState() {
-        assert("should implement `getState(): any in " + this.constructor.name);
-    }
-
-    onChange(changeHandler) {
-        this.on(STORE_GROUPS_KEY, changeHandler);
+    onChange(changeHandler:Function):Function {
+        this.on(STORE_GROUPS_CHANGE, changeHandler);
         // unbind function
-        return this.removeListener.bind(this, STORE_GROUPS_KEY, changeHandler);
+        return this.removeListener.bind(this, STORE_GROUPS_CHANGE, changeHandler);
     }
 
-    dispatch(action) {
+    /**
+     * dispatch action to own's stores.
+     * if any store has changed, will call `emitChange()`
+     * @param action
+     */
+    dispatch(action:Action) {
         this.emit(DISPATCH_BEFORE);
         this.stores.forEach(store => {
             var prevState = store.getState();
@@ -72,3 +87,5 @@ export default class StoreGroups extends EventEmitter {
         this.emit(DISPATCH_AFTER);
     }
 }
+
+export default StoreGroups;

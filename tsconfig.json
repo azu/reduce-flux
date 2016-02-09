@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "outDir": "./lib/"
+  },
+  "files": [
+    "typings/browser.d.ts",
+    "src/Action.ts",
+    "src/ActionEmitter.ts",
+    "src/ReduceStore.ts",
+    "src/StoreGroups.ts"
+  ]
+}

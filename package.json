@@ -18,8 +18,8 @@
     "test": "test"
   },
   "scripts": {
-    "build": "browserify -d -e src/App.js -o build.js",
-    "watch": "watchify -d -e src/App.js -o build.js",
+    "build": "tsc -p ./",
+    "watch": "tsc -p --watch ./",
     "test": "mocha test/**/*.js"
   },
   "browserify": {
@@ -39,9 +39,12 @@
     "espower-babel": "^4.0.1",
     "mocha": "^2.2.4",
     "power-assert": "^1.2.0",
+    "typescript": "^1.7.5",
+    "typings": "^0.6.7",
     "watchify": "^3.1.1"
   },
   "dependencies": {
+    "object-assign": "^4.0.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7"
   }

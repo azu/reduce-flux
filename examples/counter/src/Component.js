@@ -2,7 +2,7 @@
 "use strict";
 import React from "react"
 import ActionCreator from "./ActionCreator"
-import ActionEmitter from "./flux/ActionEmitter"
+import ActionEmitter from "./../../src/flux/ActionEmitter"
 import AppStateGroup from "./AppState";
 var dispatcher = new ActionEmitter();
 var action = new ActionCreator(dispatcher);
