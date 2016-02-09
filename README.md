@@ -1,14 +1,7 @@
-# dux-flux
+# reduce-flux
 
-This is fork of [mini-flux](https://github.com/azu/mini-flux)
-
-mini flux implement for DEMO.
-
-- No dependent library
-- EventEmitter only.(not use Flux's Dispatch)
-    - just mean that this implement not handle order of events
+Reduce your `<Word>` by reduce-flux.
     
-
 ## Docs
 
 :anchor: See [src/flux/README.md](src/flux/README.md)
