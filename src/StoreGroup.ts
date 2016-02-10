@@ -9,7 +9,7 @@ import ReduceStore from "./ReduceStore";
 export const STORE_GROUPS_CHANGE = "__STORE_GROUPS_CHANGE__";
 export const DISPATCH_BEFORE = "__DISPATCH_BEFORE__";
 export const DISPATCH_AFTER = "__DISPATCH_AFTER__";
-abstract class StoreGroups extends EventEmitter {
+abstract class StoreGroup extends EventEmitter {
     private dispatcher:ActionEmitter;
     private stores:ReduceStore[];
 
@@ -88,4 +88,4 @@ abstract class StoreGroups extends EventEmitter {
     }
 }
 
-export default StoreGroups;
+export default StoreGroup;

@@ -11,6 +11,7 @@
     "src/Action.ts",
     "src/ActionEmitter.ts",
     "src/ReduceStore.ts",
-    "src/StoreGroups.ts"
+    "src/StoreGroup.ts",
+    "src/index.ts"
   ]
 }
