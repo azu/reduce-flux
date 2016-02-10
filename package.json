@@ -13,7 +13,11 @@
   },
   "version": "1.0.0",
   "description": "Flux implplementation using reduce.",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "files": [
+    "lib/",
+    "src/"
+  ],
   "directories": {
     "test": "test"
   },
