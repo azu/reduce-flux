@@ -1,0 +1,26 @@
+{
+  "name": "shoping-cart",
+  "version": "1.0.0",
+  "description": "shopping cart",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify -d src/app.js -o build.js",
+    "watch": "watchify -d src/app.js -o build.js",
+    "prepublish":"npm run --if-present build"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "author": "azu",
+  "license": "MIT",
+  "dependencies": {
+    "reduce-flux": "file:../../"
+  },
+  "devDependencies": {
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "watchify": "^3.7.0"
+  }
+}
