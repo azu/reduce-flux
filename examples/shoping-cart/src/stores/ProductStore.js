@@ -18,7 +18,11 @@ function reduceProduct(product, action) {
 export function reduceProducts(products = [], action) {
     switch (action.type) {
         case keys.addToCart:
+            const {productID} = action;
             return products.map(product => {
+                if(product.id !== productID) {
+                    return product;
+                }
                 return reduceProduct(product, action);
             });
         case keys.receiveProducts:
