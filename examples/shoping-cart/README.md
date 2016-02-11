@@ -1,6 +1,14 @@
+# shopping-cart
+
 Original example from:
 
 - [voronianski/flux-comparison: Practical comparison of different Flux solutions](https://github.com/voronianski/flux-comparison "voronianski/flux-comparison: Practical comparison of different Flux solutions")
+
+## Usage
+
+    npm install
+    npm run build
+    open index.html
 
 ## What's learn from this
 
@@ -15,3 +23,4 @@ shopping-cart example has two stores:
 
 You notice that `CartStore` have not `products` state.
 `products` is only exist in `ProductStore`. `products` state should not share between two stores.
+
