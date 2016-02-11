@@ -23,10 +23,9 @@ abstract class ReduceStore extends EventEmitter {
 
     /**
      * return state of store groups
-     * @returns {Object}
+     * @returns {Object|null}
      */
-    getState() {
-        assert(this.state, "should be defined state");
+    getState():any {
         return this.state;
     }
 
@@ -34,7 +33,7 @@ abstract class ReduceStore extends EventEmitter {
      * add change event handler and return unbind function.
      * @param onChangeHandler
      */
-    onChange(onChangeHandler:Function) {
+    onChange(onChangeHandler:Function):Function {
         this.on(REDUCE_STORE_CHANGE_KEY, onChangeHandler);
         return this.removeListener.bind(this, REDUCE_STORE_CHANGE_KEY, onChangeHandler);
     }
@@ -43,7 +42,7 @@ abstract class ReduceStore extends EventEmitter {
      * update state and emit change event.
      * @param state
      */
-    setState(state:any) {
+    setState(state:any):void {
         this.state = ObjectAssign({}, this.state, state);
         this.emit(REDUCE_STORE_CHANGE_KEY);
     }
